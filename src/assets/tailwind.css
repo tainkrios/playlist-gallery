@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  * {
+    @apply m-0 p-0 box-border bg-[#fafafa];
+  }
+
+  a {
+    @apply no-underline;
+  }
+
+  button,
+  .btn {
+    @apply no-underline  bg-secondary rounded-lg border-none py-2 px-3 font-semibold cursor-pointer inline-block hover:bg-primary hover:text-white disabled:text-primary disabled:bg-secondary disabled:cursor-not-allowed disabled:opacity-50
+  }
+
+  button,
+  .btn {
+    mask-image: paint(squircle);
+    --squircle-radius: 20px;
+    --squircle-smooth: 1;
+  }
+
+  /* input {
+    background: paint(squircle);
+    --squircle-radius: 20px;
+    --squircle-smooth: 1;
+    --squircle-outline: 1px;
+    --squircle-color: #ebebeb;
+  } */
+
+  input, textarea {
+    @apply border-0 border-b-[1px] border-solid border-b-secondary p-2 outline-none block w-full box-border my-5 mx-auto;
+  }
+
+  form {
+    @apply max-w-sm my-0 mx-auto p-7 shadow-md border-[1px] border-solid border-secondary bg-white
+  }
+
+  .error {
+    @apply text-warning text-sm my-4 mx-0
+  }
+}
