@@ -39,7 +39,7 @@
   }
 
   form {
-    @apply max-w-sm my-0 mx-auto p-7 shadow-md border-[1px] border-solid border-secondary bg-white
+    @apply max-w-sm my-0 mx-auto p-7 shadow-md border-[1px] rounded-lg border-solid border-secondary bg-white
   }
 
   .error {

@@ -14,9 +14,9 @@ import { useLogin } from '../../composables/useLogin';
 import { ref } from 'vue';
 
 const { error, login, isPending } = useLogin(),
-      email            = ref(''),
-      password         = ref(''),
-      handleSubmit     = async () => {
+      email                       = ref(''),
+      password                    = ref(''),
+      handleSubmit                = async () => {
         await login(email.value, password.value)
         if (!error.value) {
           console.log('user logged in')
