@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <h3>Sign up</h3>
+    <h3 class="text-xl">Sign up</h3>
     <input type="text" placeholder="Display name" v-model="displayName">
     <input type="email" placeholder="Email" v-model="email">
     <input type="password" placeholder="Password" v-model="password">

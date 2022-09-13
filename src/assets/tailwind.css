@@ -19,12 +19,12 @@
     @apply no-underline  bg-secondary rounded-lg border-none py-2 px-3 font-semibold cursor-pointer inline-block hover:bg-primary hover:text-white disabled:text-primary disabled:bg-secondary disabled:cursor-not-allowed disabled:opacity-50
   }
 
-  button,
+  /* button,
   .btn {
     mask-image: paint(squircle);
     --squircle-radius: 20px;
     --squircle-smooth: 1;
-  }
+  } */
 
   /* input {
     background: paint(squircle);
