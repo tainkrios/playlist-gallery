@@ -2,5 +2,12 @@ import { createApp, type ComponentOptionsBase, type ComponentPublicInstance} fro
 import App from './App.vue'
 import router from './router'
 import './assets/tailwind.css'
+import { auth } from './firebase/config'
 
-createApp(App).use(router).mount('#app')
+let app: ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}>>
+
+auth.onAuthStateChanged(() => {
+  if (!app) {
+    app = createApp(App).use(router).mount('#app')
+  }
+})

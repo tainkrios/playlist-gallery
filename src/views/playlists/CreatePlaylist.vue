@@ -6,26 +6,46 @@
     <label class="text-xs block mt-7">Upload playlist cover image</label>
     <input class="border-0 padding-0" type="file" @change="handleChange">
     <div v-if="fileError" class="error">{{ fileError }}</div>
-    <button class="mt-5">Create</button>
+    <button v-if="!isPending" class="mt-5">Create</button>
+    <button v-else="isPending" disabled class="mt-5">Saving...</button>
   </form>
 </template>
 
 <script setup lang="ts">
 import { ref } from '@vue/reactivity';
 import { useStorage } from '../../composables/useStorage';
+import { useCollection } from '../../composables/useCollection';
+import { getUser } from '../../composables/getUser';
+import { timestamp } from '../../firebase/config';
 
 const title = ref(''),
       description = ref(''),
       file = ref(),
       fileError = ref(),
-      { url, filePath, uploadImage} = useStorage()
+      { url, filePath, uploadImage} = useStorage(),
+      { error, docRef } = useCollection('playlists'),
+      { user } = getUser(),
+      isPending = ref(false)
 
 const handleSubmit = async () => {
   if (file.value) {
+    isPending.value = true
     await uploadImage(file.value)
-    console.log('image upload, url', url.value)
-
-    console.log(title.value, description.value, file.value)
+    await docRef({
+      title: title.value,
+      description: description.value,
+      userId: user.value?.uid,
+      userName: user.value?.displayName,
+      coverUrl: url.value,
+      filePath: filePath.value,
+      songs: [],
+      createdAt: timestamp
+    })
+    isPending.value = false
+    if (!error.value) {
+      console.log('playlist added')
+    }
+    
   }
 }
 

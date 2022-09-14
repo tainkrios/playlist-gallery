@@ -2,7 +2,17 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/auth/Login.vue'
 import Signup from '../views/auth/Signup.vue'
-import CreatePlaylist from '../components/playlists/CreatePlaylist.vue'
+import CreatePlaylist from '../views/playlists/CreatePlaylist.vue'
+import { auth } from '../firebase/config'
+
+const requireAuth = (to, from, next) => {
+  let user = auth.currentUser
+  if (!user) {
+    next({name: 'login'})
+  } else {
+    next()
+  }
+}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,7 +20,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      beforeEnter: requireAuth
     },
     {
       path: '/login',
@@ -25,7 +36,8 @@ const router = createRouter({
     {
       path: '/playlists/create',
       name: 'createplaylist',
-      component: CreatePlaylist
+      component: CreatePlaylist,
+      beforeEnter: requireAuth
     }
   ]
 })

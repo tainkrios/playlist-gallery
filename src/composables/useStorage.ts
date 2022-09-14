@@ -16,7 +16,7 @@ export const useStorage  = () => {
 
     try {
       await uploadBytes(storageRef, file)
-      url.value = getDownloadURL(storageRef)
+      url.value = await getDownloadURL(storageRef)
     } catch (err) {
       if (err instanceof Error) {
         console.log(err.message)
