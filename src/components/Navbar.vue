@@ -6,7 +6,7 @@
         <router-link :to="{ name: 'home' }">Playlist App</router-link>
       </h1>
       <div class="ml-auto">
-        <router-link class="btn text-sm ml-4" :to="{ name: 'createplaylist' }">Create Playlist</router-link>
+        <router-link class="btn text-sm ml-4" :to="{ name: 'createPlaylist' }">Create Playlist</router-link>
         <button v-if="user" class="text-sm ml-4" @click="handleLogout">Logout</button>
         <router-link v-if="!user" class="btn text-sm ml-4" :to="{ name: 'signup' }">Sign Up</router-link>
         <router-link v-if="!user" class="btn text-sm ml-4" :to="{ name: 'login' }">Log in</router-link>

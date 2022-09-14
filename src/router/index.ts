@@ -3,9 +3,10 @@ import Home from '../views/Home.vue'
 import Login from '../views/auth/Login.vue'
 import Signup from '../views/auth/Signup.vue'
 import CreatePlaylist from '../views/playlists/CreatePlaylist.vue'
+import PlaylistDetails from '../views/playlists/PlaylistDetails.vue'
 import { auth } from '../firebase/config'
 
-const requireAuth = (to, from, next) => {
+const requireAuth = (to: any, from: any, next: (arg0?: { name: string } | undefined) => void) => {
   let user = auth.currentUser
   if (!user) {
     next({name: 'login'})
@@ -35,9 +36,16 @@ const router = createRouter({
     },
     {
       path: '/playlists/create',
-      name: 'createplaylist',
+      name: 'createPlaylist',
       component: CreatePlaylist,
       beforeEnter: requireAuth
+    },
+    {
+      path: '/playlists/:id',
+      name: 'playlistDetails',
+      component: PlaylistDetails,
+      beforeEnter: requireAuth,
+      props: true
     }
   ]
 })

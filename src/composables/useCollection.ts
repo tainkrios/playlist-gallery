@@ -12,8 +12,9 @@ export const useCollection = (message: string) => {
     isPending.value = true
 
     try {
-      await addDoc(collection(db, message), doc)
+      const res = await addDoc(collection(db, message), doc)
       isPending.value = false
+      return res
     } catch (err) {
       if (err instanceof Error) {
         console.log(err.message)
