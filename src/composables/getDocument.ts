@@ -1,5 +1,5 @@
 import { db } from '../firebase/config'
-import { collection, onSnapshot, orderBy, query } from '@firebase/firestore'
+import { onSnapshot } from '@firebase/firestore'
 import { ref, watchEffect } from 'vue'
 import { doc } from 'firebase/firestore'
 
