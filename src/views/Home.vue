@@ -1,5 +1,5 @@
 <template>
-  <div v-if="error">Could not fetch the data</div>
+  <div class="error" v-if="error">Could not fetch the data</div>
   <div>
     <ListView :playlists="documents" />
   </div>

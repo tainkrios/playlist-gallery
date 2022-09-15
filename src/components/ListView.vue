@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 
-const props = defineProps(['playlists'])
+defineProps(['playlists'])
 
 </script>
 

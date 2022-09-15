@@ -1,11 +1,36 @@
 <template>
-  <h2 class="text-2xl	">
-    Playlist Details. ID - {{ id }}
-  </h2>
+  <div class="error" v-if="error">{{ error }}</div>
+  <div v-if="document"  class="grid grid-cols-3 gap-20">
+    <div class="col-span-1 text-center">
+      <div class="overflow-hidden	rounded-2xl relative p-40">
+        <img class="block absolute top-0 left-0 min-w-full min-h-full" :src="document.coverUrl">
+      </div>
+      <h2 class="capitalize text-3xl font-semibold mt-5">{{ document.title }}</h2>
+      <p class="mb-5 text-slate-400">Created by {{ document.userName }}</p>
+      <p class="mb-5 text-left">{{ document.description }}</p>
+      <button v-if="ownership">Delete playlist</button>
+    </div>
+    <div class="col-span-2">
+      <div>
+        <p>song list here</p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-defineProps(['id'])
+import { computed } from '@vue/reactivity';
+import { getDocument } from '../../composables/getDocument';
+import { getUser } from '../../composables/getUser';
+
+const props = defineProps(['id'])
+
+const { error, document } = getDocument('playlists', props.id)
+const { user } = getUser()
+
+const ownership = computed(() => { 
+  return document.value && user.value && user.value.uid == document.value.userId
+ })
 </script>
 
 <style scoped>
