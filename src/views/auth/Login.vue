@@ -20,7 +20,7 @@ const { error, login, isPending } = useLogin(),
       router                      = useRouter(),
       handleSubmit                = async () => {
         await login(email.value, password.value)
-        router.push({ name: 'createPlaylist' })
+        router.push({ name: 'home' })
         if (!error.value) {
           console.log('user logged in')
         }

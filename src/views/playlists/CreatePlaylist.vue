@@ -19,15 +19,15 @@ import { getUser } from '../../composables/getUser';
 import { timestamp } from '../../firebase/config';
 import { useRouter } from 'vue-router';
 
-const title = ref(''),
-  description = ref(''),
-  file = ref(),
-  fileError = ref(),
+const title                      = ref(''),
+  description                    = ref(''),
+  file                           = ref(),
+  fileError                      = ref(),
   { url, filePath, uploadImage } = useStorage(),
-  { error, docRef } = useCollection('playlists'),
-  { user } = getUser(),
-  isPending = ref(false),
-  router = useRouter()
+  { error, docRef }              = useCollection('playlists'),
+  { user }                       = getUser(),
+  isPending                      = ref(false),
+  router                         = useRouter()
 
 const handleSubmit = async () => {
   if (file.value) {
