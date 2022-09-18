@@ -1,6 +1,6 @@
-import { doc, deleteDoc } from '@firebase/firestore'
-import { ref }            from "@vue/reactivity"
-import { db }             from '../firebase/config'
+import { doc, deleteDoc, updateDoc } from '@firebase/firestore'
+import { ref } from "@vue/reactivity"
+import { db } from '../firebase/config'
 
 export const useDocument = (collection: string, id: string) => {
   const error     = ref(),
@@ -22,5 +22,20 @@ export const useDocument = (collection: string, id: string) => {
     }
    }
 
-  return { error, isPending, deleteDocument }
+  const updateDocument = async (updates: {}) => {
+    isPending.value = true
+    error.value = null
+    try {
+      await updateDoc(docRef, updates)
+      isPending.value = false
+    } catch (err) {
+      if (err instanceof Error) {
+        console.log(err.message)
+        isPending.value = false
+        error.value = 'could not update the document'
+      }
+    }
+  }
+
+  return { error, isPending, deleteDocument, updateDocument }
 }
