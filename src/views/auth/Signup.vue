@@ -22,9 +22,9 @@ const { error, signup, isPending } = useSignup(),
       router = useRouter(),
       handleSubmit = async () => {
         await signup(email.value, password.value, displayName.value)
-        router.push({ name: 'home'})
         if (!error.value) {
           console.log('user signed up')
+          router.push({ name: 'userPlaylists'})
         }
       }
 
