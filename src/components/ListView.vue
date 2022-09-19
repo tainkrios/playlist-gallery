@@ -6,7 +6,7 @@
           <img class="block" :src="playlist.coverUrl">
         </div>
         <div class="mx-7">
-          <h3 class="text-xl">{{ playlist.title }}</h3>
+          <h3>{{ playlist.title }}</h3>
           <p>Created by {{ playlist.userName }}</p>
         </div>
         <div class="ml-auto">

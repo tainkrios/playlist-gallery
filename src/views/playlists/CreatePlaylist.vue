@@ -53,9 +53,10 @@ const handleSubmit = async () => {
 
 const types = ['image/png', 'image/jpeg']
 
-const handleChange = (e: Event) => {
+const handleChange = (e: { target: any }) => {
   if (e.target) {
-    const selected = e.target.files[0]
+    const target = e.target
+    const selected = target.files[0]
     if (selected && types.includes(selected.type)) {
       file.value = selected
       fileError.value = null

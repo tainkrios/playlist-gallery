@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <h3 class="text-xl">Login</h3>
+    <h3>Login</h3>
     <input type="email" placeholder="Email" v-model="email">
     <input type="password" placeholder="Password" v-model="password">
     <div class="error" v-if="error">{{ error }}</div>

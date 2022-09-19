@@ -2,7 +2,7 @@
   <div class="py-4 px-2 mb-14 bg-white">
     <nav class="flex items-center max-w-7xl my-0 mx-auto">
       <img class="max-h-14" src="../assets/playlisticon.jpeg" alt="">
-      <h1 class="ml-5 text-3xl">
+      <h1 class="ml-5">
         <router-link :to="{ name: 'home' }">Playlist App</router-link>
       </h1>
       <div class="ml-auto">

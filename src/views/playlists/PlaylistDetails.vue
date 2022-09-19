@@ -5,7 +5,7 @@
       <div class="overflow-hidden	rounded-2xl relative p-40">
         <img class="block absolute top-0 left-0 min-w-full min-h-full" :src="document.coverUrl">
       </div>
-      <h2 class="capitalize text-3xl font-semibold mt-5">{{ document.title }}</h2>
+      <h2 class="capitalize font-semibold mt-5">{{ document.title }}</h2>
       <p class="mb-5 text-slate-400">Created by {{ document.userName }}</p>
       <p class="mb-5 text-left">{{ document.description }}</p>
       <button @click="handleDelete" v-if="ownership">Delete playlist</button>

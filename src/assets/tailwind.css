@@ -19,21 +19,6 @@
     @apply no-underline  bg-secondary rounded-lg border-none py-2 px-3 font-semibold cursor-pointer inline-block hover:bg-primary hover:text-white disabled:text-primary disabled:bg-secondary disabled:cursor-not-allowed disabled:opacity-50
   }
 
-  /* button,
-  .btn {
-    mask-image: paint(squircle);
-    --squircle-radius: 20px;
-    --squircle-smooth: 1;
-  } */
-
-  /* input {
-    background: paint(squircle);
-    --squircle-radius: 20px;
-    --squircle-smooth: 1;
-    --squircle-outline: 1px;
-    --squircle-color: #ebebeb;
-  } */
-
   input, textarea {
     @apply border-0 border-b-[1px] border-solid border-b-secondary p-2 outline-none block w-full box-border my-5 mx-auto;
   }
@@ -44,5 +29,24 @@
 
   .error {
     @apply text-warning text-sm my-4 mx-0
+  }
+
+  h1 {
+    @apply text-[2rem]
+  }
+  h2 {
+    @apply text-[1.5rem]
+  }
+  h3 {
+    @apply text-[1.17rem]
+  }
+  h4 {
+    @apply text-[1rem]
+  }
+  h5 {
+    @apply text-[0.83rem]
+  }
+  h6 {
+    @apply text-[0.67rem]
   }
 }
