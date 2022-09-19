@@ -8,6 +8,7 @@
       <div class="ml-auto">
         <router-link v-if="user" class="btn text-sm ml-4" :to="{ name: 'userPlaylists' }">My Playlist</router-link>
         <router-link v-if="user" class="btn text-sm ml-4" :to="{ name: 'createPlaylist' }">Create Playlist</router-link>
+        <span class="text-sm inline-block ml-4 pl-4 border-l" v-if="user">Hi there, {{ user.displayName }}</span>
         <button v-if="user" class="text-sm ml-4" @click="handleLogout">Logout</button>
         <router-link v-if="!user" class="btn text-sm ml-4" :to="{ name: 'signup' }">Sign Up</router-link>
         <router-link v-if="!user" class="btn text-sm ml-4" :to="{ name: 'login' }">Log in</router-link>

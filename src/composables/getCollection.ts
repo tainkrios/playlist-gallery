@@ -1,14 +1,18 @@
 import { db } from '../firebase/config'
-import { collection, onSnapshot, query, where, WhereFilterOp } from 'firebase/firestore'
+import { collection, DocumentData, FieldPath, onSnapshot, Query, query, where, WhereFilterOp } from 'firebase/firestore'
 import { ref, watchEffect } from 'vue'
 
-export const getCollection = ( col: string, qry?: any) => {
+export const getCollection = (
+  col: string,
+  q?: [string | FieldPath, WhereFilterOp, unknown]
+) => {
   const documents = ref(),
-        error = ref(),
-        colRef = collection(db, col)
+    error = ref()
 
-  if (qry) {
-    const queryRef = query(colRef, where(...qry))
+  let colRef = collection(db, col)
+
+  if (q) {
+    (colRef as Query<DocumentData>) = query(colRef, where(...q))
   }
 
   const snapRef = onSnapshot(
